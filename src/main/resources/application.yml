@@ -1,0 +1,14 @@
+server:
+  port: 10101
+
+logging:
+  level:
+    root: info
+
+wx:
+  appId: wx28572fef225803ee
+  appSecret: 6d1ce29f6f0068d00c3bc80c96a3face
+  redirectUri: https://www.guojizhuang.site/receive
+  invoice:
+    spAppId: d3gyODU3MmZlZjIyNTgwM2VlXycPRuLgR86OKCmrScvyS0Xv0cjEhFm1P93b9uWpR7Df
+
