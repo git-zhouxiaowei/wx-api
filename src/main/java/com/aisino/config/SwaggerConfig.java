@@ -33,10 +33,7 @@ public class SwaggerConfig {
         return new ApiInfoBuilder()
                 .title("微信公共服务")
                 .description("微信相关操作文档")
-                //服务条款网址
-                .termsOfServiceUrl("http://he.aisino.com/")
                 .version("1.0")
-                .contact(new Contact("航天信息", "http://he.aisino.com/", "he.zhouxiaowei@aisino.com"))
                 .build();
     }
 }
