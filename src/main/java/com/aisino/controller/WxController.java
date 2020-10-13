@@ -18,6 +18,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.List;
 import java.util.Map;
 
@@ -57,11 +59,17 @@ public class WxController {
      * @Return java.util.List<java.util.Map < java.lang.String, java.lang.String>>
      */
     @ApiOperation(value = "获取jssdk信息")
-    @ApiImplicitParam(name = "url", value = "H5页面地址", required = true, dataType = "String")
+    @ApiImplicitParam(name = "url", value = "encode编码后的H5页面地址", required = true, dataType = "String")
     @GetMapping("jsSdk")
     public List<Map<String, String>> getJsSdk(HttpServletResponse response, @RequestParam String url) {
         response.setHeader("Access-Control-Allow-Origin", "*");
-        return wxService.getJsSdk(url);
+        try {
+            url = URLDecoder.decode(url, "UTF-8");
+            return wxService.getJsSdk(url);
+        } catch (UnsupportedEncodingException e) {
+            log.error("解码异常：", e);
+        }
+        return null;
     }
 
     /**
